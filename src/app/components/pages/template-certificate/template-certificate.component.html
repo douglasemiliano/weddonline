@@ -1,0 +1,182 @@
+<div class="container">
+  <div class="container" id="certificate" style="margin: 0 0 0 0; width: 100%;">
+
+    <div class="container" style="text-align: center; margin-top: 2rem; margin-bottom: 2rem; ">
+      <h5>Matrícula:</h5>
+      {{matricula}}
+    </div>
+
+
+    <div>
+      <div class="row">
+        <div class="col-8">
+          <h6>NOMES: </h6>
+        </div>
+        <div class="col-4">
+          <h6>CPF: </h6>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-7" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getGroom().name}}
+        </div>
+        <div class="col-4 offset-1"
+          style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getGroom().cpf}}
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-7" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getBride().name}}
+        </div>
+        <div class="col-4 offset-1"
+          style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getBride().cpf}}
+        </div>
+      </div>
+    </div>
+
+
+
+    <h6>NOMES COMPLETOS DE SOLTEIRO, DATAS E LOCAIS DE NASCIMENTO, NACIONALIDADE E FILIAÇÃO DOS CÔNJUGES </h6>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          <b>{{wedding.getGroom().name}}</b>, {{husbandText}}
+          <br>
+          <br>
+          <b>{{wedding.getBride().name}}</b>, {{wifeText}}
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div>
+      <div class="row">
+        <div class="col-6">
+          <h6>DATA DE REGISTRO DO CASAMENTO (POR EXTENSO): </h6>
+        </div>
+        <div class="col-1 offset-1">
+          <h6>DIA </h6>
+        </div>
+        <div class="col-1 offset-1">
+          <h6>MÊS </h6>
+        </div>
+        <div class="col-1 offset-1">
+          <h6>ANO </h6>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getWeddingDate()}}
+        </div>
+        <div class="col-1 offset-1"
+          style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getWeddingDate().getDate()}}
+        </div>
+        <div class="col-1 offset-1"
+          style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getWeddingDate().toLocaleDateString()[0]}}
+        </div>
+        <div class="col-1 offset-1"
+          style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getWeddingDate().getFullYear()}}
+        </div>
+      </div>
+
+    </div>
+
+
+    <h6>REGIME DE BENS DO CASAMENTO</h6>
+    <div class="container">
+      <div class="row">
+        <div class="col-12" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          {{wedding.getPropertyRegime()}}
+        </div>
+
+      </div>
+    </div>
+
+
+    <h6>NOME QUE CADA UM DOS CÔNJUGES PASSOU A UTILIZAR (QUANDO HOUVER ALTERAÇÃO)</h6>
+    <div class="container">
+      <div class="row">
+        <div class="col-12" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <h6>ANOTAÇÕES/AVERBAÇÕES À ACRESCER </h6>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          <p>
+            Por meio da plataforma Wedding Online, o casal <b>{{wedding.getGroom().name}}</b> e
+            <b>{{wedding.getBride().name}}</b> estão onlinemente casados.
+            Esta é uma brincadeira especificamente para casais apaixonados e emocionados que não veem a hora do tão
+            sonhado dia do casamento.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <h6>ANOTAÇÕES DE CADASTRO </h6>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12" style="border: solid 1px; border-color: black; margin-bottom: 1rem; padding: 0.5rem;">
+          <p>
+            Nada Consta.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container">
+
+      <div class="container" style="display: flex; justify-content: center; margin-bottom: 2rem; margin-top: 0.5rem;">
+        <img src="https://i.imgur.com/0K2lliF.png" alt="" style="width: 15rem;">
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+  <div class="container" style="display: flex; justify-content: center; margin-bottom: 2rem; ">
+    <button style="margin-top: 2rem;" type="submit" (click)="exportAsPDF('certificate');"
+      class="btn btn-danger">Imprimir</button>
+  </div>
+
+</div>

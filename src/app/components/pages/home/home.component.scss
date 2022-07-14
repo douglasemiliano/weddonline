@@ -1,0 +1,82 @@
+@media screen and (max-width: 769px) {
+
+    main {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 2rem;
+    }
+
+}
+
+.signin {
+    background-color: var(--primary-color);
+    color: var(--white);
+    height: 4rem;
+    margin-top: 2rem;
+}
+
+.btn {
+  height: 4rem;
+  color: rgb(240, 40, 65);
+  border: solid 2px;
+  border-color: rgb(240, 40, 65);
+  font-weight: bold;
+
+}
+
+.btn:hover{
+  height: 4rem;
+  background-color: rgb(240, 40, 65);
+  color: white;
+  font-weight: bolder;
+}
+
+
+.form-signin {
+  width: 100%;
+  max-width: 530px;
+  padding: 15px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .logo {
+    width: 40rem;
+    margin-bottom: 3rem;
+  }
+
+}
+
+
+.left-strip{
+
+    background-color: rgb(240, 40, 65);
+    height: 100vh;
+
+    .row {
+        height: 100vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 3rem;
+
+        .phrase{
+            height: 20%;
+            width: auto;
+            margin-top: 6rem;
+        }
+
+        .illustration{
+            height: 50%;
+            width: auto;
+        }
+    }
+
+
+
+
+
+}
