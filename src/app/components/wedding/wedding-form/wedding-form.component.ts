@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Person } from 'src/app/models/person';
 import { WeddingService } from 'src/app/services/wedding.service';
@@ -11,10 +11,13 @@ import { WeddingService } from 'src/app/services/wedding.service';
 })
 export class WeddingFormComponent implements OnInit {
 
-  public weddingForm: FormGroup;
+  public groomForm: FormGroup;
+  public brideForm: FormGroup;
   public groom: Person;
   public bride: Person;
   public step: number;
+  public property_regime: FormControl;
+
   constructor(
     private fb: FormBuilder,
     private service: WeddingService,
@@ -22,68 +25,57 @@ export class WeddingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.step = 1;
-    this.weddingForm = this.fb.group({
-      'groom_name': new FormControl(''),
-      'groom_cpf': new FormControl(''),
-      'groom_bornDate': new FormControl(''),
-      'groom_bornCity': new FormControl(''),
-      'groom_nationality': new FormControl(''),
-      'groom_mother': new FormControl(''),
-      'groom_father': new FormControl(''),
+    this.groomForm = this.createForm();
+    this.brideForm = this.createForm();
+    this.property_regime = new FormControl(2, Validators.required);
+  }
 
-      'bride_name': new FormControl(''),
-      'bride_cpf': new FormControl(''),
-      'bride_bornDate': new FormControl(''),
-      'bride_bornCity': new FormControl(''),
-      'bride_nationality': new FormControl(''),
-      'bride_mother': new FormControl(''),
-      'bride_father': new FormControl(''),
-
-      'property_regime': new FormControl('')
+  public createForm(): FormGroup{
+    let form = this.fb.group({
+      'name': new FormControl('', Validators.required),
+      'cpf': new FormControl('', Validators.required),
+      'bornDate': new FormControl('', Validators.required),
+      'bornCity': new FormControl('', Validators.required),
+      'nationality': new FormControl('', Validators.required),
+      'mother': new FormControl('', Validators.required),
+      'father': new FormControl('', Validators.required),
     });
+    return form
+  }
+
+  public formIsValid(form: FormGroup): boolean{
+    return form.valid? true: false
   }
 
   public onSubmit(): void {
-    this.createGroomAndBride();
-    console.log(this.service.createWedding(this.groom, this.bride, this.weddingForm.get("property_regime")?.value));
+    let groom = this.createGroomAndBride(this.groomForm);
+    let bride = this.createGroomAndBride(this.brideForm);
+
+    this.service.createWedding(groom, bride, this.property_regime?.value);
     this.router.navigate(['certificate']);
 
   }
 
-  public createGroomAndBride(): void{
-
-    this.groom = new Person(
-      this.weddingForm.get("groom_name")!.value,
-      this.weddingForm.get("groom_cpf")!.value,
-      this.weddingForm.get("groom_bornDate")!.value,
-      this.weddingForm.get("groom_bornCity")!.value,
-      this.weddingForm.get("groom_nationality")!.value,
-      this.weddingForm.get("groom_mother")!.value,
-      this.weddingForm.get("groom_father")!.value)
-
-    this.bride = new Person(
-      this.weddingForm.get("bride_name")!.value,
-      this.weddingForm.get("bride_cpf")!.value,
-      this.weddingForm.get("bride_bornDate")!.value,
-      this.weddingForm.get("bride_bornCity")!.value,
-      this.weddingForm.get("bride_nationality")!.value,
-      this.weddingForm.get("bride_mother")!.value,
-      this.weddingForm.get("bride_father")!.value)
-
+  public createGroomAndBride(form: FormGroup): Person{
+    return new Person(
+      form.get("name")!.value,
+      form.get("cpf")!.value,
+      form.get("bornDate")!.value,
+      form.get("bornCity")!.value,
+      form.get("nationality")!.value,
+      form.get("mother")!.value,
+      form.get("father")!.value)
   }
 
   public next(): void {
     this.step += 1;
-    console.log(this.step);
-    
-    if(this.step == 2){
-      document.getElementById("progress")!.style.width = "33.3%";
-    }
-    else if(this.step == 3){
-      document.getElementById("progress")!.style.width = "66.6%";
-    }
-    else {
-      document.getElementById("progress")!.style.width = "100%";
+
+    switch(this.step){
+      case 2 : document.getElementById("progress")!.style.width = "33.3%";
+      break;
+      case 3 : document.getElementById("progress")!.style.width = "66.6%";
+      break;
+      default : document.getElementById("progress")!.style.width = "100%";
 
     }
   }

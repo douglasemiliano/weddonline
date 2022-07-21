@@ -35,8 +35,6 @@ export class TemplateCertificateComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.groom);
-    console.log(this.bride);
   }
 
   public goToForm(): void{
@@ -59,7 +57,7 @@ export class TemplateCertificateComponent implements OnInit {
 
     doc.html(data!, {
       callback: function (doc) {
-        doc.save();
+        doc.save("weddind-certificate");
       },
       x: 10,
       y: 10,

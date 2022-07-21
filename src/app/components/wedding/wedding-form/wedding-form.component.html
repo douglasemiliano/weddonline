@@ -3,21 +3,21 @@
 
 
 <div class="container">
-  <form [formGroup]="weddingForm">
+  <form [formGroup]="groomForm">
     <div *ngIf="step == 1" class="container" style="margin-top: 2rem;">
       <h5 style="text-align: center;">Dados do Noivo</h5>
       <div class="row">
         <div class="col-12 col-md-8">
           <div class="form-group">
             <label for="exampleInputEmail1">Nome do Noivo</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="groom_name"
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="name"
               placeholder="Digite o nome do noivo">
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputPassword1">CPF</label>
-            <input type="text" class="form-control" formControlName="groom_cpf" placeholder="Digite o CPF do noivo">
+            <input type="text" class="form-control" formControlName="cpf" placeholder="Digite o CPF do noivo">
           </div>
         </div>
       </div>
@@ -26,20 +26,20 @@
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputEmail1">Data de nascimento</label>
-            <input type="date" class="form-control" aria-describedby="emailHelp" formControlName="groom_bornDate"
+            <input type="date" class="form-control" aria-describedby="emailHelp" formControlName="bornDate"
               placeholder="Digite o nome do noivo">
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputPassword1">Naturalidade</label>
-            <input type="text" class="form-control" formControlName="groom_bornCity" placeholder="Naturalidade">
+            <input type="text" class="form-control" formControlName="bornCity" placeholder="Naturalidade">
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputPassword1">Nacionalidade</label>
-            <input type="text" class="form-control" formControlName="groom_nationality" placeholder="Nacionalidade">
+            <input type="text" class="form-control" formControlName="nationality" placeholder="Nacionalidade">
           </div>
         </div>
       </div>
@@ -49,24 +49,25 @@
         <div class="col-12 col-md-6">
           <div class="form-group">
             <label for="exampleInputEmail1">Mãe do Noivo</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="groom_mother"
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="mother"
               placeholder="Digite o nome da mãe do noivo">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-group">
             <label for="exampleInputPassword1">Pai do Noivo</label>
-            <input type="text" class="form-control" formControlName="groom_father"
+            <input type="text" class="form-control" formControlName="father"
               placeholder="Digite o nome do pai do noivo">
           </div>
         </div>
       </div>
 
-      <button class="btn btn-danger" style="margin-top: 2rem;" (click)="next()"> Continuar </button>
+      <button class="btn btn-danger" style="margin-top: 2rem;" (click)="next()" [disabled]="!this.groomForm.valid"> Continuar </button>
     </div>
 
+  </form>
 
-
+  <form [formGroup]="brideForm">
 
     <div *ngIf="step == 2" class="container" style="margin-top: 2rem;">
       <h5 style="text-align: center;">Dados da Noiva</h5>
@@ -74,14 +75,14 @@
         <div class="col-12 col-md-8">
           <div class="form-group">
             <label for="exampleInputEmail1">Nome da Noiva</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="bride_name"
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="name"
               placeholder="Digite o nome da noiva">
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputPassword1">CPF</label>
-            <input type="text" class="form-control" formControlName="bride_cpf" placeholder="Digite o CPF da noiva">
+            <input type="text" class="form-control" formControlName="cpf" placeholder="Digite o CPF da noiva">
           </div>
         </div>
       </div>
@@ -90,20 +91,20 @@
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputEmail1">Data de nascimento</label>
-            <input type="date" class="form-control" aria-describedby="emailHelp" formControlName="bride_bornDate"
+            <input type="date" class="form-control" aria-describedby="emailHelp" formControlName="bornDate"
               placeholder="">
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputPassword1">Naturalidade</label>
-            <input type="text" class="form-control" formControlName="bride_bornCity" placeholder="Naturalidade">
+            <input type="text" class="form-control" formControlName="bornCity" placeholder="Naturalidade">
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="form-group">
             <label for="exampleInputPassword1">Nacionalidade</label>
-            <input type="text" class="form-control" formControlName="bride_nationality" placeholder="Nacionalidade">
+            <input type="text" class="form-control" formControlName="nationality" placeholder="Nacionalidade">
           </div>
         </div>
       </div>
@@ -113,37 +114,37 @@
         <div class="col-12 col-md-6">
           <div class="form-group">
             <label for="exampleInputEmail1">Mãe da Noiva</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="bride_mother"
+            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="mother"
               placeholder="Digite o nome da mãe da noiva">
           </div>
         </div>
         <div class="col-12 col-md-6">
           <div class="form-group">
             <label for="exampleInputPassword1">Pai da Noiva</label>
-            <input type="text" class="form-control" formControlName="bride_father"
+            <input type="text" class="form-control" formControlName="father"
               placeholder="Digite o nome do pai da noiva">
           </div>
         </div>
       </div>
-      <button class="btn btn-danger" style="margin-top: 2rem;" (click)="next()"> Continuar </button>
+      <button class="btn btn-danger" style="margin-top: 2rem;" (click)="next()" [disabled]="!brideForm.valid"> Continuar </button>
 
     </div>
-
+  </form>
 
     <div *ngIf="step == 3" class="container" style="margin-top: 2rem;">
       <h5 style="text-align: center;">Escolha agora o regime de bens</h5>
       <div class="row" style="margin-top: 1rem;">
         <div class="col-12">
-          <select class="form-control" formControlName="property_regime">
-            <option>Comunhão parcial de bens</option>
-            <option>Comunhão universal de bens</option>
-            <option>Separação total de bens</option>
-            <option>Separação obrigatória de bens</option>
-            <option>Participação final nos aquestos</option>
-
+          <select class="form-select" [formControl] = "this.property_regime">
+            <option value="1">Comunhão parcial de bens</option>
+            <option value="2">Comunhão universal de bens</option>
+            <option value="3">Separação total de bens</option>
+            <option value="4">Participação final nos aquestos</option>
           </select>
         </div>
       </div>
+
+
       <button class="btn btn-danger" style="margin-top: 2rem;" (click)="next()"> Continuar </button>
 
 
@@ -157,11 +158,12 @@
         <div id="progress" class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuenow="100"
           aria-valuemin="0" aria-valuemax="100"></div>
       </div>
+      <h3 style="text-align: center;">{{this.step - 1}}/3</h3>
 
     </div>
     <div class="container"
       style="display: flex; justify-content: center; flex-direction: column; width: 20%; margin-top: 3rem;">
       <button *ngIf="step==4" type="submit" (click)="onSubmit()" class="btn btn-danger">Vamos nessa!</button>
     </div>
-  </form>
+
 </div>

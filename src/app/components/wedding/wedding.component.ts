@@ -11,8 +11,8 @@ import { WeddingService } from 'src/app/services/wedding.service';
 })
 export class WeddingComponent implements OnInit {
 
-  husbandText: string;
-  wifeText: string;
+  public husbandText: string;
+  public wifeText: string;
   public groom: Person;
   public bride: Person;
   public wedding: Wedding;
@@ -25,12 +25,7 @@ export class WeddingComponent implements OnInit {
 
   ngOnInit(): void {
     this.matricula = Date.now();
-    console.log(
-    this.service.getWedding());
     this.wedding = this.service.getWedding();
-  }
-
-  public onSubmit(): void {
   }
 
 }
