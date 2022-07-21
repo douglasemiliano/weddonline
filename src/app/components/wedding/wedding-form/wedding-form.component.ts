@@ -14,12 +14,14 @@ export class WeddingFormComponent implements OnInit {
   public weddingForm: FormGroup;
   public groom: Person;
   public bride: Person;
+  public step: number;
   constructor(
     private fb: FormBuilder,
     private service: WeddingService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.step = 1;
     this.weddingForm = this.fb.group({
       'groom_name': new FormControl(''),
       'groom_cpf': new FormControl(''),
@@ -68,6 +70,22 @@ export class WeddingFormComponent implements OnInit {
       this.weddingForm.get("bride_mother")!.value,
       this.weddingForm.get("bride_father")!.value)
 
+  }
+
+  public next(): void {
+    this.step += 1;
+    console.log(this.step);
+    
+    if(this.step == 2){
+      document.getElementById("progress")!.style.width = "33.3%";
+    }
+    else if(this.step == 3){
+      document.getElementById("progress")!.style.width = "66.6%";
+    }
+    else {
+      document.getElementById("progress")!.style.width = "100%";
+
+    }
   }
 
 }
