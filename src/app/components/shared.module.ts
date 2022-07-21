@@ -7,16 +7,19 @@ import { WeddingService } from '../services/wedding.service';
 import { TemplateCertificateComponent } from './pages/template-certificate/template-certificate.component';
 import { NgxPdfModule } from '@michaelldev/ngx-pdf';
 import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
-  declarations: [WeddingComponent, WeddingFormComponent, TemplateCertificateComponent, HomeComponent],
+  declarations: [WeddingComponent, WeddingFormComponent, TemplateCertificateComponent, HomeComponent, NavbarComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPdfModule
+    NgxPdfModule,
+    RouterModule
   ],
   exports: [
     WeddingComponent,

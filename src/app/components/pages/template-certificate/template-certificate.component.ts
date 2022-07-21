@@ -54,10 +54,6 @@ export class TemplateCertificateComponent implements OnInit {
 
   public exportAsPDF(div: any) {
     let data = document.getElementById(div);
-    data!.style.width = "20cm";
-    data!.style.marginLeft= "1cm"
-    data!.style.fontSize = '10pt'
-    data!.style.fontFamily = "arial"
 
     var doc = new jspdf.jsPDF('p', 'pt', 'a3');
 
